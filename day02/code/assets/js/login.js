@@ -36,10 +36,10 @@ $(function () {
     $.ajax({
       method: 'POST',
       url: '/api/reguser',
-      data: {
-        username: $('#form_reg [name="userName"]').val(),
+      data: $(this).serialize() /* {
+        username: $('#form_reg [name="userName"]').val(), 
         password: $('#form_reg [name="password"]').val()
-      },
+      }, */,
       success: function (res) {
         if (res.status !== 0) {
           return layer.msg(res.message)
@@ -56,7 +56,7 @@ $(function () {
       method: 'POST',
       url: '/api/login',
       data: {
-        username: $('#form_login [name="userName"]').val(),
+        username: $('#form_login [name="username"]').val(),
         password: $('#form_login [name="password"]').val()
       },
       success: function (res) {
